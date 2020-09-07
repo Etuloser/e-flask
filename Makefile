@@ -9,6 +9,6 @@ restart:
 logs:
 	docker logs -f ${NAME}
 exec:
-	docker exec -it ${NAME} bash
+	docker exec -it ${NAME} sh
 build:
 	docker build -t ${NAME} .

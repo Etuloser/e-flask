@@ -12,4 +12,4 @@ EXPOSE 2333
 
 WORKDIR /srv/e-flask/
 
-CMD []
+CMD ["gunicorn","manage:app","-b","0.0.0.0:2333"]

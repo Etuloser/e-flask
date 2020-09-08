@@ -4,6 +4,10 @@ LABEL maintainer="yi.zeng@ez-cloud.com.cn"
 
 COPY ./ /srv/e-flask/
 
+RUN /bin/sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
+    apk add --no-cache mariadb-dev build-base python3-dev && \
+    rm -rf /var/cache/apk/*
+
 RUN cd /srv/e-flask/ && \
     pip install --no-cache-dir -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 

@@ -7,7 +7,7 @@ services:
     container_name: e-flask
     restart: always
     environment:
-      FLASK_APP: production
+      FLASK_CONFIG: production
     ports:
       - 2333:2333
     volumes:

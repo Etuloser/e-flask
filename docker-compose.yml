@@ -6,6 +6,8 @@ services:
     privileged: true
     container_name: e-flask
     restart: always
+    environment:
+      FLASK_APP: production
     ports:
       - 2333:2333
     volumes:

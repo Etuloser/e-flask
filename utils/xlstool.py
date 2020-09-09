@@ -4,5 +4,5 @@ class XLSTool():
     def __init__(self):
         pass
 
-    def epxort_json(self):
+    def export(self,table_name):
         pass

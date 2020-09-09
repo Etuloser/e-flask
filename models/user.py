@@ -10,5 +10,11 @@ class User(db.Model):
         self.username = username
         self.email = email
 
+    def to_json(self):
+        return {
+            'username': self.username,
+            'email': self.email
+        }
+
     def __repr__(self):
         return '<User %r>' % self.username

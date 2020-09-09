@@ -48,4 +48,10 @@ def create_app(config_name):
     config[config_name].init_app(app)
     db.init_app(app)
 
+    from app.fake.views import fake as fake_blueprint
+    app.register_blueprint(fake_blueprint, url_prefix='/fake')
+
+    from app.xls.views import xls as xls_blueprint
+    app.register_blueprint(xls_blueprint, url_prefix='/xls')
+
     return app

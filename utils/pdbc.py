@@ -2,7 +2,7 @@ from config import db
 from models.user import User
 
 
-class PDBC():
+class PDBC:
     def __init__(self):
         pass
 
@@ -15,5 +15,5 @@ class PDBC():
         db.session.commit()
 
     def query(self):
-        result = User.query.all()
+        db.session.query_property()
         print(result)

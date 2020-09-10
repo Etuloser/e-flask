@@ -15,5 +15,4 @@ class PDBC:
         db.session.commit()
 
     def query(self):
-        db.session.query_property()
-        print(result)
+        db.session.query(User).one()

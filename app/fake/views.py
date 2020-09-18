@@ -19,3 +19,11 @@ def get_mock_data():
     for i in query:
         data.append(i.to_json())
     return handle.handle_success(data=data)
+
+
+@fake.route('/update/user')
+def update_mock_data():
+    o = db.session.query(User).filter(User.username == '刘秀珍').first()
+    o.username = '刘秀'
+    db.session.commit()
+    return handle.handle_success('success')

@@ -54,4 +54,7 @@ def create_app(config_name):
     from app.xls.views import xls as xls_blueprint
     app.register_blueprint(xls_blueprint, url_prefix='/xls')
 
+    from app.pdbc.views import pdbc as xls_blueprint
+    app.register_blueprint(xls_blueprint, url_prefix='/pdbc')
+
     return app

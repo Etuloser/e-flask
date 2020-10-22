@@ -6,12 +6,13 @@ from config import config
 flask_config = os.getenv('FLASK_CONFIG') or 'default'
 db_uri = config[flask_config].SQLALCHEMY_DATABASE_URI
 
-o = re.search(r'mysql://([^:]):(.*)@(.*):(\d+)/([^?])', db_uri)
-user = o.group(1)
-passwd = o.group(2)
-host = o.group(3)
-port = o.group(4)
-db = o.group(5)
+if 'mysql' in db_uri:
+    o = re.search(r'mysql://([^:]):(.*)@(.*):(\d+)/([^?])', db_uri)
+    user = o.group(1)
+    passwd = o.group(2)
+    host = o.group(3)
+    port = o.group(4)
+    db = o.group(5)
 
 
 class PDBC:

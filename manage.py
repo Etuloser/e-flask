@@ -1,7 +1,7 @@
-from flask import jsonify
 import os
 from dotenv import load_dotenv
-from config import create_app, db
+
+from config import create_app
 from utils.handle import handle_success
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')

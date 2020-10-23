@@ -7,6 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    KAFKA_URI = os.environ.get('KAFKA_URI')
 
     @staticmethod
     def init_app(app):
@@ -59,5 +60,11 @@ def create_app(config_name):
 
     from app.apidocs.views import apidocs as apidocs_blueprint
     app.register_blueprint(apidocs_blueprint, url_prefix='/apidocs')
+
+    from app.pkafka.views import pkafka as pkafka_blueprint
+    app.register_blueprint(pkafka_blueprint, url_prefix='/pkafka')
+
+    from app.command.views import command as command_blueprint
+    app.register_blueprint(command_blueprint, url_prefix='/command')
 
     return app

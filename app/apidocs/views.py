@@ -12,7 +12,4 @@ def endpoint():
 
 @apidocs.route('/list')
 def get_list():
-    from manage import app
-    result = app.url_map
-    data = result
-    return handle.handle_error(str(data))
+    pass

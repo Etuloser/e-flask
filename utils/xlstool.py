@@ -3,7 +3,7 @@ import xlwt
 from config import basedir
 
 
-class XLSTool():
+class XLSWriter():
     """Import/export Tool"""
 
     def __init__(self, sheet_name='default', file_name='default'):
@@ -15,17 +15,17 @@ class XLSTool():
     def export(self, json_list):
         # 填写表头
         th = list(json_list[0].keys())
-        self.feed(line=0, td_list=th)
+        self.feeder(line=0, td_list=th)
 
         # 填写表内容
         for index, json in enumerate(json_list):
             td_list = list(json.values())
             line = index + 1
-            self.feed(line=line, td_list=td_list)
+            self.feeder(line=line, td_list=td_list)
 
         self.save()
 
-    def feed(self, line, td_list):
+    def feeder(self, line, td_list):
         """
         :param line: 行号
         :param td_list: 待填入单元格列表

@@ -1,4 +1,7 @@
 import unittest
+
+from flask import current_app
+
 from config import create_app, db
 
 
@@ -25,3 +28,9 @@ class BaseTest(unittest.TestCase):
             load_dotenv(dotenv_path)
 
         self.assertIsNotNone(os.getenv('DATABASE_URL'))
+
+    def test_app_exists(self):
+        self.assertFalse(current_app is None)
+
+    def test_app_is_testing(self):
+        self.assertTrue(current_app.config['TESTING'])

@@ -15,6 +15,8 @@ pymysql = "^1.0.2"
 kafka-python = "^2.0.2"
 flask-restful = "^0.3.8"
 flask-apscheduler = "^1.11.0"
+gunicorn = "^20.0.4"
+elasticsearch = "^7.12.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.5"

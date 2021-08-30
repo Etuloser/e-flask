@@ -4,3 +4,4 @@ data-dev.sqlite
 data-test.sqlite
 data.sqlite
 .vscode/
+.env

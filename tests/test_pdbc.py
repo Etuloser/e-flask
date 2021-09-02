@@ -2,7 +2,7 @@ import unittest
 
 from config import create_app, db
 from utils.pdbc import PDBC
-from models.user import User
+from models.users import User
 
 
 class PDBCTest(unittest.TestCase):

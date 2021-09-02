@@ -1,12 +1,15 @@
 import os
+
 import xlwt
+import xlrd
+
 from config import basedir
 
 
 class XLSWriter():
     """Import/export Tool"""
 
-    def __init__(self, sheet_name='default', file_name='default'):
+    def __init__(self, sheet_name='Sheet1', file_name='XLSTool'):
         self.sheet_name = sheet_name
         self.file_name = file_name
         self.wb = xlwt.Workbook(encoding='utf-8')
@@ -24,6 +27,7 @@ class XLSWriter():
             self.feeder(line=line, td_list=td_list)
 
         self.save()
+        return True
 
     def feeder(self, line, td_list):
         """
@@ -39,3 +43,19 @@ class XLSWriter():
         if os.path.exists(file):
             os.remove(file)
         self.wb.save(self.file_name + '.xls')
+
+class XLSReader:
+    """xls reader made by xlrd"""
+
+    def __init__(self,file_path,sheet_name):
+        self.wb = xlrd.open_workbook(file_path)
+        self.ws = self.wb.sheet_by_name(sheet_name)
+
+    def get_sheet_name(self):
+        return self.wb.sheet_names()
+    
+    def to_json(self):
+        data = []
+        for row in range(1,self.ws.nrows):
+            data.append(self.ws.row(row))
+        return data

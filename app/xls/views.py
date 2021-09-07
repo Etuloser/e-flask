@@ -1,8 +1,10 @@
 from flask import Blueprint, send_from_directory
-from utils import handle
-# from models.user import Users
-# from utils.xlstool import XLSTool
+
 from config import basedir
+from models.users import Users
+from utils import handle
+from utils.xlstool import XLSWriter
+
 
 xls = Blueprint('xls', __name__)
 
@@ -13,12 +15,12 @@ def endpoint():
     return handle.handle_success(data=data)
 
 
-# @xls.route('/get/user/export')
-# def get_user_export():
-#     query = User.query.all()
-#     json_list = []
-#     for i in query:
-#         json_list.append(i.to_json())
-#     xls = XLSTool(sheet_name='user', file_name='user_test')
-#     xls.export(json_list=json_list)
-#     return send_from_directory(basedir, 'user_test.xls', as_attachment=True)
+@xls.route('/get/user/export')
+def get_user_export():
+    query = Users.query.all()
+    json_list = []
+    for i in query:
+        json_list.append(i.to_json())
+    xls = XLSWriter(sheet_name='user', file_name='user_test')
+    xls.export(json_list=json_list)
+    return send_from_directory(basedir, 'user_test.xls', as_attachment=True)

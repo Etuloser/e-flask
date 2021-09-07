@@ -6,7 +6,7 @@ import xlrd
 from config import basedir
 
 
-class XLSWriter():
+class XLSWriter:
     """Import/export Tool"""
 
     def __init__(self, sheet_name='Sheet1', file_name='XLSTool'):

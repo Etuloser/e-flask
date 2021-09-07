@@ -5,13 +5,13 @@ from utils.fake import Faker
 
 
 def make_10_mock_data():
-    from models.user import User
+    from models.users import Users
 
     dev_sqlite_file = os.path.join(os.path.dirname(__file__), 'data-dev.sqlite')
     if os.path.exists(dev_sqlite_file):
         fake = Faker()
         for _ in range(10):
-            o = User(fake.name(), fake.email())
+            o = Users(fake.name(), fake.email())
             db.session.add(o)
         db.session.commit()
         return handle.handle_success()

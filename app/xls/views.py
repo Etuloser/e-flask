@@ -21,6 +21,10 @@ def get_user_export():
     json_list = []
     for i in query:
         json_list.append(i.to_json())
-    xls = XLSWriter(sheet_name='user', file_name='user_test')
-    xls.export(json_list=json_list)
+    xlsw = XLSWriter(file_name='user_test')
+    ws = xlsw.add_sheet("sheet1")
+    xlsw.export(ws,json_list)
+    ws = xlsw.add_sheet("sheet2")
+    xlsw.export(ws,json_list)
+    xlsw.save()
     return send_from_directory(basedir, 'user_test.xls', as_attachment=True)

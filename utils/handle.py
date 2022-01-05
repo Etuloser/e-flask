@@ -19,8 +19,7 @@ def handle_success(data=None, message='success', code='10200'):
     return jsonify({
         'data': data,
         'message': message,
-        'code': code,
-        'success': True
+        'code': code
     })
 
 
@@ -28,6 +27,5 @@ def handle_error(data=None, message='error', code='10500'):
     return jsonify({
         'data': data,
         'message': message,
-        'code': code,
-        'success': False
+        'code': code
     })

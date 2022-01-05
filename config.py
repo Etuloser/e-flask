@@ -1,9 +1,9 @@
 import os
 
 from flask import Flask
+from flask_apscheduler import APScheduler
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-from flask_apscheduler import APScheduler
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -12,6 +12,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SCHEDULER_API_ENABLED = True
     KAFKA_URI = os.environ.get('KAFKA_URI')
+    SCHEDULER_TIMEZONE = 'Asia/Shanghai'
 
     @staticmethod
     def init_app(app):

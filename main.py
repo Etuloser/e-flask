@@ -22,3 +22,7 @@ def root_path():
 @scheduler.task('interval', id='do_job_1', seconds=5, misfire_grace_time=900)
 def job1():
     print('Job 1 executed')
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='4396', debug=True)
